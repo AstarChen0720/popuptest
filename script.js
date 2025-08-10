@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 使用 tippy.createSingleton() 來管理所有實例
       singletonInstance = tippy.createSingleton(tippyInstances, {
         // 你可以在這裡設定所有 popup 的共同行為
+        allowHTML: true,
         placement: 'top',
         animation: 'scale',
         // 讓 popup 之間的切換更流暢
