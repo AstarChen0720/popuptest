@@ -1,0 +1,31 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+#text-input {
+  width: 90%;
+  height: 150px;
+  font-size: 16px;
+  padding: 10px;
+}
+
+#output-container {
+  width: 90%;
+  min-height: 150px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-top: 10px;
+  white-space: pre-wrap; /* 讓換行和空格能正常顯示 */
+}
+
+#output-container span {
+  cursor: pointer;
+  display: inline-block; /* 確保每個 span 都是可觸發的獨立區塊 */
+}
+
+#output-container span:hover {
+  background-color: #ffff99;
+}

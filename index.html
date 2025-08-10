@@ -6,16 +6,23 @@
   <title>popuptest</title>
   <!-- Tippy.js 樣式 -->
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
-
-
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <button id="myWord">Hover 我</button>
+
+
+  <h1>文字輸入區</h1>
+  <textarea id="text-input" placeholder="在這裡輸入或貼上任何內容..."></textarea>
+
+  <h1>結果預覽區 (每個字都有 popup)</h1>
+  <div id="output-container"></div>
 
   <!-- Popper.js (定位用) -->
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <!-- Tippy.js -->
   <script src="https://unpkg.com/tippy.js@6"></script>
+  <!-- Tippy.js Singleton Add-on -->
+  <script src="https://unpkg.com/tippy.js@6/dist/addons/singleton.umd.min.js"></script>
   <!-- 連接到script.js -->
   <script src="script.js"></script>
 </body>
