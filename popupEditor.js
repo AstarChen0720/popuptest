@@ -166,11 +166,17 @@
     // 2. 將新內容存回 popupData
     popupData[wordId][section] = newContent;
 
-    // 3. 銷毀 EasyMDE 編輯器實例並釋放資源
+    // 3. 找到編輯器所在的父容器元素 (也就是 .popup-section)
+    const editorContainer = activeEditor.element.closest('.popup-section');
+
+    // 4. 銷毀 EasyMDE 編輯器實例並釋放資源
     activeEditor.toTextArea();
     activeEditor = null;
 
-
+    // 5. 如果找到了容器，就將新內容解析為 HTML 並更新回去，這樣在關閉前的innerHTML一定就有最新的html
+    if (editorContainer) {
+      editorContainer.innerHTML = marked.parse(newContent);
+    }
   }
 
   // 將 PopupEditor 物件掛載到 window 上，讓其他 script可以存取
