@@ -74,6 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // 讓 popup 之間的切換更流暢
         moveTransition: 'transform 0.2s ease-out',
         interactive: true, // 允許選擇文字
+        // 新增：將 onMount 設定移到這裡
+        onMount(instance) {
+          // 呼叫 PopupEditor 裡的方法來處理掛載事件
+          if (window.PopupEditor && window.PopupEditor.handleMount) {
+            window.PopupEditor.handleMount(instance);
+          }
+        },
+        // 新增：當 popup 即將隱藏時，呼叫 handleHide
+        onHide(instance) {
+          if (window.PopupEditor && window.PopupEditor.handleHide) {
+            window.PopupEditor.handleHide(instance);
+          }
+          // 返回 true 以允許 popup 正常隱藏
+          return true;
+        },
       });
     }
   });
