@@ -29,3 +29,19 @@ body {
 #output-container span:hover {
   background-color: #ffff99;
 }
+
+/* Popup 內容樣式 */
+.popup-container {
+  text-align: left;
+  min-width: 250px; /* 給 popup 一個最小寬度，避免內容少時過窄 */
+}
+
+.popup-simple-view, .popup-detailed-view {
+  padding: 5px 8px; /* 在簡易/詳細說明的區塊內增加一點空間 */
+}
+
+.popup-container hr {
+  margin: 2px 0; /* 縮小分隔線的上下間距 */
+  border: 0;
+  border-top: 1px solid #eee; /* 讓分隔線變成一條淺灰色的細線 */
+}

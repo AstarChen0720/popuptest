@@ -6,7 +6,9 @@
    - 他要我可以單獨的編輯每一個popup並且支援markdown格式，只要我按下就會進入編輯模式，點旁邊或是ctrl+enter儲存就會顯示markdown的效果，且有自動補全或填充的方便功能
    - [x] 支援markdown顯示
      - [x] 引入marked(支援markdown格式輸入後轉換成html顯示的引擎)
-   - [ ] 設定預設版型---上面是簡易下面是詳細解釋
+   - [x] 開一個新的javascript來調整這些樣式
+     - [x] 先接收從script傳過來的tippy陣列
+   - [x] 設定預設版型---分成上面是簡易下面是詳細解釋
    - [ ] 單獨可編輯的popup
      - [ ] 讓每個詞都有自己的id
      - [ ] 初始化popup---讓每個詞的popup在你還沒編輯前是空白的，且是view模式

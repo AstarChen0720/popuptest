@@ -6,10 +6,12 @@
   <title>popuptest</title>
   <!-- Tippy.js 樣式 -->
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+  <!-- EasyMDE 樣式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+  <!-- 自己的css樣式 -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 
   <h1>文字輸入區</h1>
   <textarea id="text-input" placeholder="在這裡輸入或貼上任何內容..."></textarea>
@@ -25,7 +27,12 @@
   <script src="https://unpkg.com/tippy.js@6/dist/addons/singleton.umd.min.js"></script>
   <!-- Markdown -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- EasyMDE（自動清單/縮排等便利功能） -->
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+
   <!-- 連接到script.js -->
   <script src="script.js"></script>
+  <!-- 連接到popupEditor.js -->
+  <script src="popupEditor.js"></script>
 </body>
 </html>

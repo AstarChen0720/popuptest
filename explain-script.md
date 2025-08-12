@@ -12,7 +12,8 @@
    3. 為每個分開的詞都建立一個tippy實例
    4. 把所有tippy裝成一個陣列(因為singleton只吃tippy陣列)，並且順便為每一個非空白詞設定一個span，然後全部輸出到output-content
    5. 把tippy陣列用來建立Singleton並設定樣式
-   6. (tippy會自動為span內的東西掛上popup，又有群組了所有的popup讓每次只會顯示一個)
+   6. 把tippy陣列傳到popupEditor增刪樣式、交互邏輯
+   7. (tippy會自動為span內的東西掛上popup，又有群組了所有的popup讓每次只會顯示一個)
 
 ## 輸入 / 輸出
 - **輸入**：test word
@@ -32,7 +33,7 @@
       1. 先清空上次的singleton跟內容
       2. 將輸入的內容作成常數這樣才好用
       const text = textInput.value
-      3. text.split(/(\s+)/)，.split()是一個用在文字上面的方法，代表用括號內的條件來切割文字，而括號內的/(\s+)/是"正則表達式"(=一種表達條件的方法)，前後的/是正則表達式的開始和結束，而\s代表全部的空白字元(space、tab、\n、...)，"+"代表一個或多個，而外面的括號是告訴split要保留這些拿來當作辨識條件的東西(預設是會捨棄)。
+      3. text.split(/(\s+)/)，.split()是一個用在文字上面的方法，代表用括號內的條件來切割文字，而括號內的/(\s+)/是"正則表達式"(一種表達條件的方法)，前後的/是正則表達式的開始和結束，而\s代表全部的空白字元(space、tab、\n、...)，"+"代表一個或多個，而外面的括號是告訴split要保留這些拿來當作辨識條件的東西(預設是會捨棄)。
       4. const tippyInstances = [];
       建立一個空白陣列來放等等的一堆tippy
       5. if 這個切下來的部分(part)不為空
@@ -43,6 +44,12 @@
       6. 否則就直接加到output-container
       7. if 有任何的tippy實例被建立
          1. 把由tippy組合而成的陣列設定成singleton，這樣就不會在同一時間顯示多個popup，且可以統一設定樣式方便管理
+      8. if 有任何實例被建立，就會把由tippy組成的陣列當做popupEditor裡面得attachAll的參數傳到popupEditor
+
+### 所以現在html裡面的東西
+- 有一個id 是 input的textarea
+- 和一個id 是output-container的div
+  - 而這個output-content裡面會有一堆被span包起來的詞和沒有被span包起來的空白詞
 
 ## 隨便寫東西
 25/8/11

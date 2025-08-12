@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const parts = text.split(/(\s+)/);
 
     const tippyInstances = []; // 建立一個空陣列來存放所有 tippy 實例
-
+    
+    // 新增一個變數：用來放唯一 id
+    let wordCounter = 0; 
 
 
     // 遍歷所有部分 (單字和空格)
@@ -33,11 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (part.trim() !== '') {
         const wordSpan = document.createElement('span');
         wordSpan.textContent = part;
+
+        // 新增：為每個詞設定唯一 id
+        wordCounter += 1;
+        //把id新增到wordSpan中
+        wordSpan.dataset.wordId = `w-${wordCounter}`;
+        
         outputContainer.appendChild(wordSpan);
 
         // 建立 tippy 實例並設定內容
         const instance = tippy(wordSpan, {
-          content: `這是 '${part}' 的 popup`,
+          content: `這是 ${part}的 popup`,
+          allowHTML: true,
         });
         // 將建立好的實例加到陣列中
         tippyInstances.push(instance);
@@ -48,9 +57,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // 新增：將所有 tippy 實例交給 PopupEditor 交互編輯邏輯
+    if (tippyInstances.length > 0 && window.PopupEditor) {
+      window.PopupEditor.attachAll(tippyInstances);
+    }
+    
     // 如果有任何 tippy 實例被建立
     if (tippyInstances.length > 0) {
       // 使用 tippy.createSingleton() 來管理所有實例
+      // !注意，他會覆蓋掉你單獨為每個 tippy 實例設定的樣式
       singletonInstance = tippy.createSingleton(tippyInstances, {
         // 你可以在這裡設定所有 popup 的共同行為
         allowHTML: true,
@@ -58,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animation: 'scale',
         // 讓 popup 之間的切換更流暢
         moveTransition: 'transform 0.2s ease-out',
+        interactive: true, // 允許選擇文字
       });
     }
   });
