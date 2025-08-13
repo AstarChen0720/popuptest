@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 建立 tippy 實例並設定內容
         const instance = tippy(wordSpan, {
-          content: `這是 ${part}的 popup`,
+          content: `這是 ${wordSpan.textContent} 的 popup`,
           allowHTML: true,
         });
         // 將建立好的實例加到陣列中
@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 讓 popup 之間的切換更流暢
         moveTransition: 'transform 0.2s ease-out',
         interactive: true, // 允許選擇文字
+        // 避免被容器裁切或層級影響
+        appendTo: () => document.body,
         // 新增：將 onMount 設定移到這裡
         onMount(instance) {
           // 呼叫 PopupEditor 裡的方法來處理掛載事件

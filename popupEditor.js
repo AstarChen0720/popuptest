@@ -142,12 +142,14 @@
       minHeight: '100px',
       spellChecker: false, // 關閉拼字檢查
       status: false, // 隱藏底部的狀態列
-      autosave: {
-        enabled: true,
-        delay: 1000
-      }
     });
-
+    // 確保尺寸與焦點在 popup 完全顯示後正確計算
+    setTimeout(() => {
+      if (activeEditor && activeEditor.codemirror) {
+        activeEditor.codemirror.refresh();
+        activeEditor.codemirror.focus();
+      }
+    }, 0);
   }
 
 

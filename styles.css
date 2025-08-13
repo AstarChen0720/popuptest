@@ -41,7 +41,32 @@ body {
 }
 
 .popup-container hr {
+
+
   margin: 2px 0; /* 縮小分隔線的上下間距 */
   border: 0;
   border-top: 1px solid #eee; /* 讓分隔線變成一條淺灰色的細線 */
 }
+
+/* 允許在 tippy 內選字，且編輯時顯示 I-beam 游標 */
+.tippy-box .popup-container,
+.tippy-box .popup-container * {
+  user-select: text;
+}
+
+.tippy-box .CodeMirror,
+.tippy-box .CodeMirror * {
+  cursor: text !important;
+  user-select: text !important;
+}
+/* 給編輯器可視高度，避免看起來只能操作第一行 */
+.tippy-box .CodeMirror {
+  min-height: 140px;
+}
+
+/* 內容過長時可以在 popup 內捲動 */
+.tippy-box .tippy-content {
+  max-height: 60vh;
+  overflow: auto;
+}
+
